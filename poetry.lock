@@ -525,6 +525,22 @@ files = [
 ]
 
 [[package]]
+name = "kagglehub"
+version = "0.3.4"
+description = "Access Kaggle resources anywhere"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "kagglehub-0.3.4-py3-none-any.whl", hash = "sha256:ae608069ab09758fbbcdc51108e4786187bd1c77bf120b1c349d0a7e353f7940"},
+    {file = "kagglehub-0.3.4.tar.gz", hash = "sha256:0b063d081ecefc6d8bfbd0885733aad9b3cebb5b46183ff105313a5b2ddabd90"},
+]
+
+[package.dependencies]
+packaging = "*"
+requests = "*"
+tqdm = "*"
+
+[[package]]
 name = "kiwisolver"
 version = "1.4.7"
 description = "A fast implementation of the Cassowary constraint solver"
@@ -1521,6 +1537,27 @@ files = [
 ]
 
 [[package]]
+name = "tqdm"
+version = "4.67.1"
+description = "Fast, Extensible Progress Meter"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2"},
+    {file = "tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["nbval", "pytest (>=6)", "pytest-asyncio (>=0.24)", "pytest-cov", "pytest-timeout"]
+discord = ["requests"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -1581,4 +1618,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "81557673235caaf5ecc799fdf4db23ec6dea9b1126dc4ea38234b6ad5a2bbde9"
+content-hash = "d322a675b0c2914dc0fa9567e78b3e6b8d6a9a55ba2b6698343b802fcf0fc923"

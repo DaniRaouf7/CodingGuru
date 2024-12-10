@@ -20,6 +20,7 @@ pyarrow = "^18.1.0"
 dask = "^2024.12.0"
 sqlalchemy = "^2.0.36"
 pyspark = "^3.5.3"
+kagglehub = "^0.3.4"
 
 
 [build-system]
