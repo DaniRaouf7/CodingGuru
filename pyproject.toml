@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "project-becoming-code-guru"
+version = "0.1.0"
+description = "Python project voor zelfontwikkeling en testen van bepaalde code"
+authors = ["Danish Raouf <danishraouf@hotmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
