@@ -1,5 +1,4 @@
-import kagglehub
-import os
+import kagglehub  # type: ignore
 
 from .get_data import get_data_path
 
