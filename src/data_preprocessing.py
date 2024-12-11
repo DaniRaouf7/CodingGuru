@@ -30,8 +30,16 @@ def preprocess_data(file_path):
     X = df_shopping.drop(columns=['Purchase Amount (USD)'])
     y = df_shopping['Purchase Amount (USD)']
 
+    print(f"Vorm van X (features): {X.shape}")
+    print(f"Vorm van y (target): {y.shape}")
+
     # Train, split maken
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    print(f"Vorm van X_train: {X_train.shape}")
+    print(f"Vorm van X_test: {X_test.shape}")
+    print(f"Vorm van y_train: {y_train.shape}")
+    print(f"Vorm van y_test: {y_test.shape}")
 
     # Categorische variabelen identificeren
     categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
