@@ -16,7 +16,7 @@ def train_and_optimize_model(X_train, X_test, y_train, y_test):
 
     rf = RandomForestRegressor(random_state=42)
 
-    # Definieer hyperparameters voor GridSearch
+    # Hyperparameters voor GridSearch
     param_grid = {
         'n_estimators': [100, 200],
         'max_depth': [None, 10, 20],
@@ -44,3 +44,5 @@ def train_and_optimize_model(X_train, X_test, y_train, y_test):
     print(f"Mean Absolute Error: {mae}")
     print(f"R-squared: {r2}")
 
+    # Cross validatie
+    cross_validate_model(best_model, X_train, y_train)

@@ -15,4 +15,5 @@ def cross_validate_model(model, X, y, cv=5):
     cv_scores = cross_val_score(model, X, y, cv=cv, scoring='neg_mean_absolute_error')
     print(f"Cross-validation scores: {cv_scores}")
     print(f"Mean cross-validation score: {cv_scores.mean()}")
+
     return cv_scores
