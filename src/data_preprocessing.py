@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
@@ -30,16 +30,8 @@ def preprocess_data(file_path):
     X = df_shopping.drop(columns=['Purchase Amount (USD)'])
     y = df_shopping['Purchase Amount (USD)']
 
-    print(f"Vorm van X (features): {X.shape}")
-    print(f"Vorm van y (target): {y.shape}")
-
     # Train, split maken
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-    print(f"Vorm van X_train: {X_train.shape}")
-    print(f"Vorm van X_test: {X_test.shape}")
-    print(f"Vorm van y_train: {y_train.shape}")
-    print(f"Vorm van y_test: {y_test.shape}")
 
     # Categorische variabelen identificeren
     categorical_cols = X.select_dtypes(include=['object']).columns.tolist()
@@ -49,7 +41,7 @@ def preprocess_data(file_path):
 
     # Voor numerieke data: miswaarden imputeren en standaardiseren
     numeric_transformer = Pipeline(steps=[
-        ('scaler', 'passthrough')
+        ('scaler', StandardScaler())
     ])
 
     # Voor categorische data: OneHotEncoder gebruiken
@@ -68,4 +60,18 @@ def preprocess_data(file_path):
     X_train = preprocessor.fit_transform(X_train)
     X_test = preprocessor.transform(X_test)
 
-    return X_train, X_test, y_test, y_train
+    # Verkrijg de feature-namen van de categorische kolommen na OneHotEncoding
+    categorical_feature_names = preprocessor.named_transformers_['cat']['onehot'].get_feature_names_out(categorical_cols)
+
+    # Combineer de numerieke kolomnamen met de gecodeerde categorische feature-namen
+    all_feature_names = numerical_cols + list(categorical_feature_names)
+
+    # Zet de numpy arrays om in DataFrame met de juiste kolomnamen
+    X_train_dense = X_train.toarray()
+    X_test_dense = X_test.toarray()
+
+    # Maak een DataFrame met de juiste kolomnamen
+    X_train = pd.DataFrame(X_train_dense, columns=all_feature_names)
+    X_test = pd.DataFrame(X_test_dense, columns=all_feature_names)
+
+    return X_train, X_test, y_train, y_test
