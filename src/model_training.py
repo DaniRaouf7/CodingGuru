@@ -4,7 +4,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 from src.model_validation import cross_validate_model
 
 
-def train_and_optimize_model(X_train, X_test, y_train, y_test):
+def train_and_optimize_model_rf(X_train, X_test, y_train, y_test):
     """
     Train het model en voer hyperparameter tuning uit.
     Args:

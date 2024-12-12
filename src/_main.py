@@ -3,7 +3,7 @@ import pandas as pd
 import kagglehub  # type: ignore
 
 from src.data_preprocessing import preprocess_data
-from src.model_training import train_and_optimize_model
+from src.model_training import train_and_optimize_model_rf
 
 
 def main():
@@ -24,7 +24,7 @@ def main():
     X_train, X_test, y_train, y_test = preprocess_data(dataset_file)
 
     # Train model
-    train_and_optimize_model(X_train, X_test, y_train, y_test)
+    train_and_optimize_model_rf(X_train, X_test, y_train, y_test)
 
 
 if __name__ == "__main__":
